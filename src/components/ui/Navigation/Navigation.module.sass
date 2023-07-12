@@ -1,0 +1,45 @@
+.root
+  margin-left: auto
+  display: flex
+  align-items: center
+  .subList
+    margin-left: 30px
+    display: flex
+    align-items: center
+    gap: 30px
+    li
+      font-weight: 500
+      font-size: 18px
+      line-height: 22px
+      letter-spacing: 0.01em
+      a
+        text-decoration: none
+        color: #000
+        transition: color 0.3s
+      &:hover
+        a
+          color: #fa0
+      &.active
+        a
+          color: #fa0
+
+  .menuBtn
+    cursor: pointer
+    margin-left: 30px
+    width: 22px
+    height: 22px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 5px
+    span
+      width: 20px
+      height: 2px
+      border-radius: 500px
+      &:nth-child(1)
+        background: #000
+      &:nth-child(2)
+        background: #fa0
+      &:nth-child(3)
+        background: #000
