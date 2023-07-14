@@ -3,17 +3,11 @@
 import styles from "./Navigation.module.sass";
 import Link from "next/link";
 
+
 import { usePathname } from "next/navigation";
 
 export default function Navigation() {
   const pathname = usePathname();
-
-  const options = [
-    { key: 0, option: "Home", href: "/" },
-    { key: 1, option: "About", href: "/about" },
-    { key: 2, option: "Blog", href: "/blog" },
-    { key: 3, option: "News", href: "/news" },
-  ];
 
   return (
     <div className={styles.root}>
