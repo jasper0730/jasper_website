@@ -1,6 +1,8 @@
+import '@/styles/globals.sass';
 import "@/styles/main.sass";
-
 import { Header, Footer } from "@/components/ui";
+
+import { notoSansTC, chelaOne } from "@/lib/fonts.js"
 
 export const metadata = {
   title: "Jasper",
@@ -9,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${notoSansTC.variable} ${chelaOne.variable}`}>
         <Header navOptionsData/>
         <main>{children}</main>
         <Footer />

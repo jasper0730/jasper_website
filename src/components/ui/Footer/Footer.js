@@ -2,111 +2,32 @@ import styles from "./Footer.module.sass";
 import Link from "next/link";
 import { Button } from "@/components/common/Buttons";
 
-export default function Footer() {
+export async function getData() {
+  const res = await fetch("http://localhost:3000/api/footer");
+
+  return res.json();
+}
+
+export default async function Footer() {
+  const data = await getData();
+
   return (
     <footer className={styles.root}>
       <div className={styles.container}>
         <div className={styles.footerTop}>
-          <ul className={styles.menuList}>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-          </ul>
-          <ul className={styles.menuList}>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-          </ul>
-          <ul className={styles.menuList}>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-          </ul>
-          <ul className={styles.menuList}>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="/about">ABOUT</Link>
-            </li>
-          </ul>
-          <ul className={styles.menuList}>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-            <li>
-              <Link href="/news">NEWS</Link>
-            </li>
-          </ul>
+          {data &&
+            data.map((obj, i) => (
+              <ul className={styles.menuList} key={i}>
+                {obj.page &&
+                  obj.page.map((option, j) => (
+                    <li key={j}>
+                      <Link href={option.href} >
+                        {option.option}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            ))}
         </div>
         <div className={styles.footerBottom}>
           <Link className={styles.logo} href="/">
