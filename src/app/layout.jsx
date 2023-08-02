@@ -2,7 +2,7 @@ import '@/styles/globals.sass';
 import "@/styles/main.sass";
 import { Header, Footer } from "@/components/ui";
 
-import { notoSansTC, chelaOne } from "@/lib/fonts.js"
+import { notoSansTC, chelaOne } from "@/lib/fonts"
 
 export const metadata = {
   title: "Jasper",

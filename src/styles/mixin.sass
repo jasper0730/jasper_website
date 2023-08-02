@@ -1,0 +1,89 @@
+@use "sass:math"
+
+//RWD
+@mixin rwdmax($max)
+  @media only screen and (max-width: $max + px)  
+    @content
+
+@mixin rwdmin($min)
+  @media only screen and (min-width: $min + px)  
+    @content
+
+@mixin rwdrange($min,$max)
+  @media only screen and (min-width: $min + px) and (max-width: $max + px)
+    @content
+
+//文字大小像素轉rem
+@mixin font-size($size: 16) 
+  font-size: math.div($size, 16) + rem
+
+@function px($px)
+  @return math.div($px, 16) * 1rem
+
+//文字大小像素轉vw/vh
+@function pxTovw($px)
+  @return math.div($px, 1920) * 100vw
+
+@function pxTovh($px)
+  @return math.div($px, 1080) * 100vh
+
+=page-root
+  width: 100%
+  padding-top: 50px
+  height: 100%
+  display: flex
+  flex-direction: column
+
+=page-root-range
+  max-width: 1440px
+  padding-left: 30px
+  padding-right: 30px
+
+=title
+  .main 
+    font-size: 1.5rem
+    line-height: 130%
+
+    span 
+      font-size: 1.5rem
+      display: inline-block
+      margin-right: 10px
+
+  p 
+    font-size: 1rem
+    line-height: 150%
+    color: #2b2b2b
+  
+  .main + p 
+    padding-top: 15px
+
+=hover
+  +rwdmin(1201)
+    &:hover
+      @content
+  +rwdmax(1200)
+    &:active
+      @content
+
+// absolute-center
+=posCenter
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+
+// 文字溢出加省略號 ...
+=ellipsis($line: 2)
+  display: block
+  overflow: hidden
+  display: -webkit-box
+  text-overflow: ellipsis
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $line
+
+//placeholder
+=placeholder
+  &::placeholder
+    @content
+    opacity: 1 //Firefox
+    text-overflow: ellipsis
