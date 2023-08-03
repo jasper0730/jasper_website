@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useRef } from 'react';
@@ -5,6 +6,8 @@ import { Dropdown } from "@/components/common/Dropdown";
 
 const options = ['選項 1', '選項 2', '選項 3', '選項 4', '選項 5'];
 
+
+import Banner from '@/components/ui/Banner'
 
 export default function Home() {
   const [num, setNum] = useState(0);
@@ -38,6 +41,7 @@ export default function Home() {
       <button onClick={handleMinus}>減1</button>
       <p>數字：{num}</p>
       <p>點擊次數：{clickNum.current}</p>
+      <Banner />
     </div>
   )
 }
